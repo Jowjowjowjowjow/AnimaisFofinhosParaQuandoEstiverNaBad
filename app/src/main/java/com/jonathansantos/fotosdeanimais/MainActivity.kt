@@ -5,87 +5,72 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.jonathansantos.fotosdeanimais.extensions.cleanUrl
-import com.jonathansantos.fotosdeanimais.model.CatPhoto
-import com.jonathansantos.fotosdeanimais.model.DogPhoto
-import com.jonathansantos.fotosdeanimais.model.FoxPhoto
-import com.jonathansantos.fotosdeanimais.retrofit.RetrofitInitializer
+import com.jonathansantos.fotosdeanimais.services.MainViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
-    private var call = RetrofitInitializer()
+    private var mainViewModel: MainViewModel = MainViewModel(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         bt_dogPhoto.setOnClickListener {
-            showProgressBar()
-            getDogPhoto()
+            mainViewModel.getDogPhotoUrl()
         }
 
         bt_catPhoto.setOnClickListener {
-            showProgressBar()
-            getCatPhoto()
+            mainViewModel.getCatPhotoUrl()
         }
 
         bt_foxPhoto.setOnClickListener {
-            showProgressBar()
-            getFoxPhoto()
+            mainViewModel.getFoxPhotoUrl()
         }
 
+        bt_duckPhoto.setOnClickListener {
+            mainViewModel.getDuckPhotoUrl()
+        }
 
+        bt_birdPhoto.setOnClickListener {
+           mainViewModel.getBirdPhotoUrl()
+        }
+
+        bt_randomPhoto.setOnClickListener {
+            fillWithRandomPhoto()
+        }
     }
 
-    private fun getDogPhoto() {
-        call.dogService().getDogPhoto().enqueue(object : Callback<DogPhoto?> {
-            override fun onFailure(call: Call<DogPhoto?>, error: Throwable) {
-                logError(error)
-            }
-
-            override fun onResponse(call: Call<DogPhoto?>, response: Response<DogPhoto?>) {
-                response.body()?.let {
-                    if (it.url.endsWith("mp4")) getDogPhoto() else fillPhoto(it.url)
-                }
-            }
-        })
+    private fun fillWithRandomPhoto(){
+        when((1..5).random()){
+            1 -> mainViewModel.getDogPhotoUrl()
+            2 -> mainViewModel.getCatPhotoUrl()
+            3 -> mainViewModel.getFoxPhotoUrl()
+            4 -> mainViewModel.getDuckPhotoUrl()
+            5 -> mainViewModel.getBirdPhotoUrl()
+        }
     }
 
-    private fun getCatPhoto() {
-        call.catService().getCatPhoto().enqueue(object : Callback<CatPhoto?> {
-            override fun onFailure(call: Call<CatPhoto?>, error: Throwable) {
-                logError(error)
-            }
-
-            override fun onResponse(call: Call<CatPhoto?>, response: Response<CatPhoto?>) {
-                response.body()?.let {
-                    if (it.file.endsWith("mp4")) getDogPhoto() else fillPhoto(it.file.cleanUrl)
-                }
-            }
-        })
-    }
-
-    private fun getFoxPhoto() {
-        call.foxService().getFoxPhoto().enqueue(object : Callback<FoxPhoto?> {
-            override fun onFailure(call: Call<FoxPhoto?>, error: Throwable) {
-                logError(error)
-            }
-
-            override fun onResponse(call: Call<FoxPhoto?>, response: Response<FoxPhoto?>) {
-                response.body()?.let {
-                    if (it.image.endsWith("mp4")) getDogPhoto() else fillPhoto(it.image.cleanUrl)
-                }
-            }
-        })
+    fun showProgressAndFillPhoto(url: String){
+        try {
+            showProgressBar()
+            fillPhoto(url)
+        } catch (error: Throwable) {
+            logError(error)
+            hideProgressBar()
+        } catch (exception : Exception){
+            logError(Throwable(exception.toString()))
+            hideProgressBar()
+        }
     }
 
     private fun showProgressBar() {
         progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = View.GONE
     }
 
     private fun logError(error: Throwable) {
@@ -94,25 +79,23 @@ class MainActivity : AppCompatActivity() {
             "Poxa, ocorreu um erro :(",
             Toast.LENGTH_SHORT
         ).show()
-        Log.e("Error", error.cause.toString())
+        Log.e("Error", error.toString())
     }
 
     private fun fillPhoto(url: String) {
-        Picasso.get().load(url).into(iv_photo, object: com.squareup.picasso.Callback {
+        Picasso.get().load(url).into(iv_photo, object : com.squareup.picasso.Callback {
             override fun onSuccess() {
-                if (progressBar != null){
+                if (progressBar != null) {
                     progressBar.visibility = View.GONE
                 }
             }
 
             override fun onError(e: Exception?) {
-                if (progressBar != null){
+                if (progressBar != null) {
                     progressBar.visibility = View.GONE
                 }
                 logError(Throwable(e))
             }
-
         })
     }
-
 }

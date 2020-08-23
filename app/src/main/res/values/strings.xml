@@ -3,4 +3,8 @@
     <string name="button_generate_dog_photo">Cachorro</string>
     <string name="button_generate_cat_photo">Gato</string>
     <string name="button_generate_fox_photo">Raposa</string>
+    <string name="button_generate_bird_photo">Pássaro</string>
+    <string name="button_generate_random_photo">Aleatório</string>
+    <string name="button_generate_duck_photo">Pato</string>
+
 </resources>

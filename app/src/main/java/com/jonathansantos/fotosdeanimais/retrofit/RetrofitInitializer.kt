@@ -1,8 +1,6 @@
 package com.jonathansantos.fotosdeanimais.retrofit
 
-import com.jonathansantos.fotosdeanimais.services.CatService
-import com.jonathansantos.fotosdeanimais.services.DogService
-import com.jonathansantos.fotosdeanimais.services.FoxService
+import com.jonathansantos.fotosdeanimais.services.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,6 +9,9 @@ class RetrofitInitializer {
     private val dogApi = "https://random.dog/"
     private val foxApi = "https://randomfox.ca/"
     private val catApi = "https://aws.random.cat/"
+    private val duckApi = "https://random-d.uk/api/v2/"
+    private val birdApi = "http://shibe.online/api/"
+
 
     private fun retrofit(api: String): Retrofit = Retrofit.Builder()
         .baseUrl(api)
@@ -20,4 +21,6 @@ class RetrofitInitializer {
     fun dogService(): DogService = retrofit(dogApi).create(DogService::class.java)
     fun catService(): CatService = retrofit(catApi).create(CatService::class.java)
     fun foxService(): FoxService = retrofit(foxApi).create(FoxService::class.java)
+    fun duckService(): DuckService = retrofit(duckApi).create(DuckService::class.java)
+    fun birdService(): BirdService = retrofit(birdApi).create(BirdService::class.java)
 }
