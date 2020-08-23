@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">FotosDeAnimais</string>
-    <string name="button_generate_new_photo">Nova foto!</string>
+    <string name="button_generate_dog_photo">Cachorro</string>
+    <string name="button_generate_cat_photo">Gato</string>
+    <string name="button_generate_fox_photo">Raposa</string>
 </resources>
