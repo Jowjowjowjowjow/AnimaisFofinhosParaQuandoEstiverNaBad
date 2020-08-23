@@ -1,4 +1,4 @@
-package com.jonathansantos.fotosdeanimais
+package com.jonathansantos.animaisfofos
 
 import org.junit.Test
 

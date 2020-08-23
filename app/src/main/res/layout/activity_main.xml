@@ -15,8 +15,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_dogPhoto"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_duckPhoto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,5 +63,37 @@
         app:layout_constraintEnd_toEndOf="@+id/iv_photo"
         app:layout_constraintStart_toStartOf="@+id/iv_photo"
         app:layout_constraintTop_toTopOf="@+id/iv_photo" />
+
+    <Button
+
+        android:id="@+id/bt_birdPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_generate_bird_photo"
+        app:layout_constraintBottom_toTopOf="@+id/bt_dogPhoto"
+        app:layout_constraintEnd_toEndOf="@+id/bt_dogPhoto"
+        app:layout_constraintStart_toStartOf="@+id/bt_dogPhoto" />
+
+    <Button
+        android:id="@+id/bt_duckPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_generate_duck_photo"
+        app:layout_constraintBottom_toTopOf="@+id/bt_catPhoto"
+        app:layout_constraintEnd_toEndOf="@+id/bt_catPhoto"
+        app:layout_constraintStart_toStartOf="@+id/bt_catPhoto" />
+
+    <Button
+
+        android:id="@+id/bt_randomPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/button_generate_random_photo"
+        app:layout_constraintBottom_toTopOf="@+id/bt_foxPhoto"
+        app:layout_constraintEnd_toEndOf="@+id/bt_foxPhoto"
+        app:layout_constraintStart_toStartOf="@+id/bt_foxPhoto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

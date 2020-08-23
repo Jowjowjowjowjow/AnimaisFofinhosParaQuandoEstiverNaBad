@@ -1,6 +1,6 @@
-package com.jonathansantos.fotosdeanimais.retrofit
+package com.jonathansantos.animaisfofos.retrofit
 
-import com.jonathansantos.fotosdeanimais.services.*
+import com.jonathansantos.animaisfofos.services.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

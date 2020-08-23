@@ -1,13 +1,13 @@
-package com.jonathansantos.fotosdeanimais.services
+package com.jonathansantos.animaisfofos.services
 
 import androidx.lifecycle.ViewModel
-import com.jonathansantos.fotosdeanimais.MainActivity
-import com.jonathansantos.fotosdeanimais.extensions.cleanUrl
-import com.jonathansantos.fotosdeanimais.model.CatPhoto
-import com.jonathansantos.fotosdeanimais.model.DogPhoto
-import com.jonathansantos.fotosdeanimais.model.DuckPhoto
-import com.jonathansantos.fotosdeanimais.model.FoxPhoto
-import com.jonathansantos.fotosdeanimais.retrofit.RetrofitInitializer
+import com.jonathansantos.animaisfofos.MainActivity
+import com.jonathansantos.animaisfofos.extensions.cleanUrl
+import com.jonathansantos.animaisfofos.model.CatPhoto
+import com.jonathansantos.animaisfofos.model.DogPhoto
+import com.jonathansantos.animaisfofos.model.DuckPhoto
+import com.jonathansantos.animaisfofos.model.FoxPhoto
+import com.jonathansantos.animaisfofos.retrofit.RetrofitInitializer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

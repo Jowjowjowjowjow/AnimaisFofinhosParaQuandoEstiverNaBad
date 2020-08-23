@@ -1,6 +1,6 @@
-package com.jonathansantos.fotosdeanimais.services
+package com.jonathansantos.animaisfofos.services
 
-import com.jonathansantos.fotosdeanimais.model.DogPhoto
+import com.jonathansantos.animaisfofos.model.DogPhoto
 import retrofit2.Call
 import retrofit2.http.GET
 
